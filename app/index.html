@@ -14,10 +14,30 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+ 
+    <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+
+    <script>
+      var parse_app_id = "Uk00xv536Y7jwNUtwXKUwKpo3zU16KKmVnUPaiyb";
+      var parse_js_key = "85EGgk7ruUdSiORTqeexhnObs49i0pnMDwgqwUBA";
+      Parse.initialize(parse_app_id, parse_js_key);
+
+    </script>
+
   </head>
   <body ng-app="loginParseApp">
 
     <!-- Add your site or application content here -->
+
+    <header ng-controller="HeaderUserCtrl">
+      <div ng-show="user.loggedIn">
+        <img syle="width:30px;height:30px" src="{{user.pict_src}}">
+        <input type="button" ng-click="user.logout()" value="Log Out">
+      </div>
+      <div ng-show="!user.loggedIn">
+        <input type="button" ng-click="user.login()" value="log In"></login>
+      </div>
+    </header>
 
 
     <div class="container">
@@ -28,8 +48,6 @@
       <div class="container">
       </div>
     </div>
-
-
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -48,6 +66,8 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/header_user.js"></script>
+        <script src="scripts/services/userauth-service.js"></script>
         <!-- endbuild -->
 </body>
 </html>
